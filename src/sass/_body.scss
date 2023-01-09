@@ -1,0 +1,59 @@
+.section {}
+
+.sectino__container {
+    margin-right: auto;
+
+}
+
+.body__list {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -10px;
+    margin-bottom: -10px;
+}
+
+.body__item {
+    flex-basis: calc(100% / 3 - 10px);
+    margin-left: 10px;
+    margin-bottom: 10px;
+
+}
+
+.body__image {}
+
+.body__info {}
+
+.body__title {}
+
+.body__ganre {}
+
+.body__pagination {}
+
+.pagination__list {
+    display: flex;
+    margin-bottom: 30px;
+    margin-top: 30px;
+    justify-content: center;
+}
+
+.pagination__item {
+    &:not(:last-child) {
+        margin-right: 20px;
+    }
+}
+
+.pagination__link {
+    display: flex;
+    align-items: center;
+    padding: 5px 10px;
+    background-color: gray;
+    border: 1px solid black;
+    border-radius: 4px;
+    text-decoration: none;
+    color: white;
+
+    &.active {
+        background-color: orange;
+    }
+
+}
