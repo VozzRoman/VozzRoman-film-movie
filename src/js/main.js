@@ -34,16 +34,40 @@ function clickSubmit(e) {
 
 
 function renderMainPage() {
-	fetch(TRAIDIN__URL + `&page=${currentPages}`)
+	return fetch(TRAIDIN__URL + `&page=${currentPages}`)
 		.then(r => r.json())
 		.then(data => {
-			renderMarkUp(data.results)
-            renderPaginatinon(data.total_pages);
+		renderMarkUp(data.results)
+      renderPaginatinon(data.total_pages);
 		})
 		
         .catch(error => console.log(error));
     
 }
+
+function getGanre() {
+    return fetch(GENERS__URL)
+        .then(r => r.json())
+		 .then(r => {
+			 return r.genres;
+			});
+	
+} 
+
+function insertGanre() {
+	return renderMainPage()
+		.then(data => {
+			return getGanre().then(ganrelist => {
+				return data.map(movie => ({
+					...movie,
+					release_date: movie.release_date.split('-')[0],
+					genres: movie.genre_ids.map(id => ganrelist.filter(el => el.id === id))
+					.flat(),
+				}))
+			})
+		})
+}
+
 
 
 
@@ -90,26 +114,28 @@ function resetMainContainer() {
     containerPagination.innerHTML = '';
 }
 
-function getGanre() {
-    return fetch(GENERS__URL)
-        .then(r => r.json())
-        .then(r => {
-            filterGenre(r.genres);
-        });
-}
 
-function filterGenre(someId) {
-    someId.map(item => console.log(item.id));
-}
 
-function renderMarkUp(treandinLibs) {
-    const markUp = treandinLibs.map(item => {
-    
+
+console.log(returnGeners());
+// function filterGenre(someId, posterId) {
+// return someId.find(item => {
+// for (const i of posterId) {
+// 	if (i === item.id) {
+// 		return true;
+// 	}
+// }
+// 	 });
+// }
+
+
+ function  renderMarkUp(treandinLibs) {
+	const markUp = treandinLibs.map(item => {		
 		const size = 'w500';
 		let IMAGE__BASE = `https://image.tmdb.org/t/p/${size}${item.poster_path}`;
 		const DEFAULT__PIC = 'https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small/default-avatar-icon-of-social-media-user-vector.jpg'
 		const dataRelese = new Date(item.release_date).getFullYear();
-		console.log(dataRelese);
+	
 		function defaultPicture() {
 			if (IMAGE__BASE !== `https://image.tmdb.org/t/p/${size}${item.poster_path}`) {
 				 return DEFAULT__PIC;
@@ -117,7 +143,8 @@ function renderMarkUp(treandinLibs) {
 				  return IMAGE__BASE;
 			
 		}
-		
+
+
 		return `
 				<li class="body__item">
 				<a href="" class="body__link">
@@ -126,7 +153,8 @@ function renderMarkUp(treandinLibs) {
 				<div class="body__deteils">
 					<h2 class="body__title">${item.title}</h2>
 					<div class="body__info">
-						<p class="body__ganre">${item.genre_ids}</p>
+						<p class="body__ganre">
+						${getGanre(item.genre_ids)}</p>
 						<p class="body__year">${dataRelese}</p>
 					</div>
 				</div>
@@ -137,7 +165,8 @@ function renderMarkUp(treandinLibs) {
 }
 
 
+
 //All functions
 
 renderMainPage();
-getGanre()
+
