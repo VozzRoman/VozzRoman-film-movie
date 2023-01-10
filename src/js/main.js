@@ -9,7 +9,7 @@ const containerPagination = document.querySelector('#pagination');
 
 
 //Varibles TDM
-const TRAIDIN__URL = 'https://api.themoviedb.org/3/trending/all/day?api_key=45e036602b450491912e4761702a27c4';
+const TRAIDIN__URL = 'https://api.themoviedb.org/3/trending/all/day?api_key=45e036602b450491912e4761702a27c4&';
 const SEARCH__URL = 'https://api.themoviedb.org/3/search/movie?api_key=45e036602b450491912e4761702a27c4&language=en-US&page=1&include_adult=false';
 
 const GENERS__URL = 'https://api.themoviedb.org/3/genre/movie/list?api_key=45e036602b450491912e4761702a27c4&language=en-US'
@@ -23,7 +23,7 @@ formEl.addEventListener('submit', clickSubmit);
 let searchQery = '';
 let totalPages = '';
 let currentPages = 1;
-
+let page = 1;
 
 function clickSubmit(e) {
     e.preventDefault();
@@ -34,11 +34,11 @@ function clickSubmit(e) {
 
 
 function renderMainPage() {
-	fetch(TRAIDIN__URL)
+	fetch(TRAIDIN__URL + `&page=${currentPages}`)
 		.then(r => r.json())
 		.then(data => {
 			renderMarkUp(data.results)
-			renderPaginatinon(data.total_pages);
+            renderPaginatinon(data.total_pages);
 		})
 		
         .catch(error => console.log(error));
@@ -51,11 +51,27 @@ function renderPaginatinon(totalPages) {
 	for (let i = 0; i < totalPages; i += 1) {
 		if (i < 10) {
 	let button = document.createElement('BUTTON');
-			button.innerText = i;
-			button.setAttribute('data-page', i);
+            button.innerText = i;
+            // button.classList.add('active')
+            button.setAttribute('data-page', i);
+            
 	containerPagination.appendChild(button);
-			button.addEventListener('click', function () {
-				currentPages = i;
+            button.addEventListener('click', function (e) {
+                currentPages = e.target.dataset.page;
+                if (currentPages === i) button.classList.add('active');
+                console.log(button)
+                  
+                resetMainContainer();
+                resetPaginatino();
+                
+                renderMainPage();
+                
+                
+               
+                
+                
+                
+                
 			})
 			
 		}
@@ -66,10 +82,29 @@ function renderPaginatinon(totalPages) {
 }
 
 
+function resetPaginatino() {
+    containerFilms.innerHTML = '';
+}
 
+function resetMainContainer() {
+    containerPagination.innerHTML = '';
+}
+
+function getGanre() {
+    return fetch(GENERS__URL)
+        .then(r => r.json())
+        .then(r => {
+            filterGenre(r.genres);
+        });
+}
+
+function filterGenre(someId) {
+    someId.map(item => console.log(item.id));
+}
 
 function renderMarkUp(treandinLibs) {
-	const markUp = treandinLibs.map(item => {
+    const markUp = treandinLibs.map(item => {
+    
 		const size = 'w500';
 		let IMAGE__BASE = `https://image.tmdb.org/t/p/${size}${item.poster_path}`;
 		const DEFAULT__PIC = 'https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small/default-avatar-icon-of-social-media-user-vector.jpg'
@@ -105,3 +140,4 @@ function renderMarkUp(treandinLibs) {
 //All functions
 
 renderMainPage();
+getGanre()
