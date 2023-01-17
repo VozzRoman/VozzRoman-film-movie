@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @import '~node_modules/modern-normalize/modern-normalize.css';
 .header__container {
   background-repeat: no-repeat;
@@ -137,4 +138,75 @@ ul {
 
 p, h1, h2, h3, h4, h5 {
   margin: 0;
+}
+
+.pagination__list {
+  display: flex;
+  align-items: center;
+}
+
+.tui-page-btn {
+  display: flex;
+  font-size: 13px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  width: 30px;
+  height: 30px;
+  background-color: white;
+  text-decoration: none;
+  color: black;
+  text-decoration: none;
+}
+.tui-page-btn:not(:last-child) {
+  margin-right: 5px;
+}
+.tui-page-btn:hover, .tui-page-btn :focus {
+  background-color: orange;
+  color: white;
+}
+
+.tui-is-selected {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  padding: 5px;
+  background-color: orange;
+  text-decoration: none;
+  color: white;
+}
+
+.tui-ico-prev {
+  position: relative;
+  opacity: 1;
+  color: transparent;
+}
+.tui-ico-prev::before {
+  content: "←";
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: black;
+}
+
+.tui-ico-next {
+  position: relative;
+  opacity: 1;
+  color: transparent;
+}
+.tui-ico-next::before {
+  content: "→";
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: black;
+}
+
+.tui-first {
+  display: none;
+}
+
+.tui-last {
+  display: none;
 }

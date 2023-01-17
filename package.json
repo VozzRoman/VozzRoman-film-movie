@@ -1,24 +1,25 @@
 {
-  "name": "filmoteca",
+  "name": "VozzRoman-film-movie",
   "version": "2.0.0",
   "description": "",
-  "homepage": "https://VozzRoman.github.io/filmoteca",
+  "homepage": "https://VozzRoman.github.io/VozzRoman-film-movie",
   "scripts": {
     "start": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url /filmoteca/"
+    "build": "parcel build src/*.html --public-url /VozzRoman-film-movie/"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/VozzRoman/filmoteca.git"
+    "url": "git+https://github.com/VozzRoman/VozzRoman-film-movie.git"
   },
   "keywords": [],
   "author": "Voznuke Roman",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/goitacademy/filmoteca/issues"
+    "url": "https://github.com/VozzRoman/VozzRoman-film-movie/issues"
   },
   "dependencies": {
-    "modern-normalize": "^1.1.0"
+    "modern-normalize": "^1.1.0",
+    "tui-pagination": "^3.4.1"
   },
   "devDependencies": {
     "@parcel/transformer-sass": "^2.6.0",
