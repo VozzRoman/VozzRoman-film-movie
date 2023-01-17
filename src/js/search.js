@@ -5,8 +5,9 @@ import { resf } from "./ref";
 import { renderMainPage } from "./main";
 
 
-page = 1;
 
+page = 1;
+let searchQuery = '';
 
 
 resf.formEl.addEventListener('submit', clickOnSubmit);
@@ -14,14 +15,19 @@ resf.formEl.addEventListener('submit', clickOnSubmit);
 function clickOnSubmit(e) {
 	e.preventDefault();
 	console.log(e.currentTarget.elements.search.value);
-	let searchQuery = e.currentTarget.elements.search.value;
-	clearContainer();
-	e.currentTarget.elements.search.value = '';
-	if (searchQuery === 0) {
-		renderMainPage();
-	} else {
+	searchQuery = e.currentTarget.elements.search.value;
+	clearContainer();	
+	// if (searchQuery === '') {
+	// 	console.log('go nahuy');
+	// }
+	if (searchQuery > 0) {
+		console.log(searchQuery);
 		renderSearchPage(searchQuery);
+
+	} else {
+		renderMainPage();
 	}
+	// resf.formEl.reset();
 	
 }
 

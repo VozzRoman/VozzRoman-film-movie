@@ -2,15 +2,18 @@
 import { resf } from "./ref";
 export function createMarkUp(data, allGenres) {
 	const markUp = data.map(item => {
+		
+		let defaultPic = 'https://png.pngtree.com/thumb_back/fh260/back_our/20190622/ourmid/pngtree-minimalist-film-festival-film-and-tv-movie-poster-image_220289.jpg';
 		const { title, genre_ids, release_date, poster_path, vote_average } = item;
+		let filmPoster = `https://image.tmdb.org/t/p/w500${poster_path}`;
 		const idGenre = genreId(allGenres, genre_ids);
 		const year = new Date(release_date).getFullYear();
 		console.log(idGenre);
 		return `
 			<li class="gallery__item">
 					<a href="" class="gallery__link">
-						<div class="gallery__vote">${vote_average}</div>
-						<img src="https://image.tmdb.org/t/p/w500${poster_path}" alt="${title}" >
+						<div class="gallery__vote">${vote_average.toFixed(1)}</div>
+						<img src="${poster_path === null ? defaultPic : filmPoster}" alt="${title}" >
 					</a>
 					<div class="gallery__info">
 						<h2 class="gallery__title">${title}</h2>
