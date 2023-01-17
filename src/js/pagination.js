@@ -7,7 +7,6 @@ import { resf } from './ref';
 const container = document.getElementById('pagination');
 
 
-
 const options = {
   totalItems: 200,
   itemsPerPage: 1,
@@ -59,21 +58,21 @@ export function showPaginationTrended(totalPages) {
 
 
 //Пагинация поиска фильмов
-const paginationSearch = new Pagination(container, options)
-console.log(pagination);
-paginationSearch.on('afterMove', onPaginationMove);
+// const paginationSearch = new Pagination(container, options)
+// console.log(pagination);
+// paginationSearch.on('afterMove', onPaginationMove);
 
-function onPaginationMove({ page }) { 
-  renderSearchPage(page)
-  clearGalary();
-  // renderSearchFilms(page)
+// function onPaginationMove({ page }) { 
+//   renderSearchPage(page)
+//   clearGalary();
+//   // renderSearchFilms(page)
 
-}
+// }
 
-export function showPaginationSearch(totalPages) {
-  paginationSearch.setTotalItems(totalPages)
-  // pagination.movePageTo(options.page)
-}
+// export function showPaginationSearch(totalPages) {
+//   pagination.setTotalItems(totalPages)
+//   // pagination.movePageTo(options.page)
+// }
 
 function clearGalary() {
   resf.containerFilms.innerHTML = '';

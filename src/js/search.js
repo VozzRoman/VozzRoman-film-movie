@@ -20,6 +20,7 @@ function clickOnSubmit(e) {
 		
 	if (searchQuery === '') {
 		resf.warrMessage.textContent = 'type something';
+		
 		return;
 	}
 	if (searchQuery.length > 0) {
@@ -49,8 +50,8 @@ export async function renderSearchPage(page, query) {
 		clearContainer();
 		const getGen = await fetchGenres();
 		resf.warrMessage.textContent = '';
-	createMarkUp(data, getGen.genres);
-	showPaginationSearch(promis.total_pages);
+		createMarkUp(data, getGen.genres);
+		// showPaginationSearch(promis.total_pages);
 	
 
 }
