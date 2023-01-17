@@ -1,6 +1,7 @@
 
 import Pagination from 'tui-pagination';
-import { fetchMainPage } from './api';
+import { renderMainPage } from './main';
+import { resf } from './ref';
 
 const container = document.getElementById('pagination');
 
@@ -39,16 +40,21 @@ const options = {
 
 //пагінація для трендів
 const pagination = new Pagination(container, options)
-
+console.log(pagination);
 pagination.on('afterMove', onPaginationMove);
 
 function onPaginationMove({ page }) { 
-  fetchMainPage(page)
+  renderMainPage(page)
+  clearGalary();
   // renderSearchFilms(page)
 
 }
 
 export function showPaginationTrended(totalPages) {
   pagination.setTotalItems(totalPages)
-  pagination.movePageTo(options.page)
+  // pagination.movePageTo(options.page)
+}
+
+function clearGalary() {
+  resf.containerFilms.innerHTML = '';
 }
