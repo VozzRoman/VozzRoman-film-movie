@@ -3,6 +3,7 @@ import { createMarkUp } from "./renderPopularFilm";
 import { fetchGenres } from "./api";
 import { resf } from "./ref";
 import { renderMainPage } from "./main";
+import { showPaginationSearch } from "./pagination";
 
 
 
@@ -24,10 +25,10 @@ function clickOnSubmit(e) {
 	if (searchQuery.length > 0) {
 		console.log(searchQuery);
 		resf.warrMessage.textContent = '';
-		renderSearchPage(searchQuery);
+		renderSearchPage(page, searchQuery);
 
 	} else {
-		renderMainPage();
+		renderMainPage(page);
 	}
 	resf.formEl.reset();
 	
@@ -36,7 +37,7 @@ function clickOnSubmit(e) {
 
 
 
-async function renderSearchPage(query) {
+export async function renderSearchPage(page, query) {
 	const promis = await fetchSearch(page, query);
 	const data = promis.results;
 	if (data.length === 0) {
@@ -48,7 +49,9 @@ async function renderSearchPage(query) {
 		clearContainer();
 		const getGen = await fetchGenres();
 		resf.warrMessage.textContent = '';
-		createMarkUp(data, getGen.genres);
+	createMarkUp(data, getGen.genres);
+	showPaginationSearch(promis.total_pages);
+	
 
 }
 
