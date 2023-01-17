@@ -4,7 +4,7 @@ export function createMarkUp(data, allGenres) {
 	const markUp = data.map(item => {
 		
 		let defaultPic = 'https://png.pngtree.com/thumb_back/fh260/back_our/20190622/ourmid/pngtree-minimalist-film-festival-film-and-tv-movie-poster-image_220289.jpg';
-		const { title, genre_ids, release_date, poster_path, vote_average } = item;
+		const { title, genre_ids, release_date, poster_path, vote_average, name } = item;
 		let filmPoster = `https://image.tmdb.org/t/p/w500${poster_path}`;
 		const idGenre = genreId(allGenres, genre_ids);
 		const year = new Date(release_date).getFullYear();
@@ -16,7 +16,7 @@ export function createMarkUp(data, allGenres) {
 						<img src="${poster_path === null ? defaultPic : filmPoster}" alt="${title}" >
 					</a>
 					<div class="gallery__info">
-						<h2 class="gallery__title">${title}</h2>
+						<h2 class="gallery__title">${!title ? name : title}</h2>
 						<div class="gallery__box">
 							<p class="gallery__ganre">${idGenre}</p>
 							<p class="gallery__year">${year}</p>

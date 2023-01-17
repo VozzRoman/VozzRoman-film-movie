@@ -7,7 +7,7 @@ import { fetchGenres } from "./api";
 
 let page = 1;
 
-renderMainPage()
+ renderMainPage()
 
 
 export async function renderMainPage() {
