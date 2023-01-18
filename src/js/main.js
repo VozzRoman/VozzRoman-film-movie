@@ -7,7 +7,7 @@ import { showPaginationTrended } from "./pagination";
 
 let page = 1;
 
-renderMainPage(page)
+renderMainPage(page);
 
 
 export async function renderMainPage(pageValue) {
