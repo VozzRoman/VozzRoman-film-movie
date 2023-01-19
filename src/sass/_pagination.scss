@@ -1,10 +1,19 @@
 
-.pagination__list{
-	display: flex;
+.main-page__pagination{
+	
 	align-items: center;
 	padding: 20px 0;
 	justify-content: center;
 }
+
+.search-page__pagination{
+	align-items: center;
+	padding: 20px 0;
+	justify-content: center;
+
+}
+
+
 .pagination-page-button {
 	display: flex;
 	font-size: 13px;

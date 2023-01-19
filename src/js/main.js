@@ -14,9 +14,9 @@ export async function renderMainPage(pageValue) {
 	const promise = await fetchMainPage(pageValue);
 	const data = promise.results;
 	const getGen = await fetchGenres();
-	
 	createMarkUp(data, getGen.genres);
-	showPaginationTrended(promise.total_pages)
-	console.log(promise.total_pages);
+	showPaginationTrended(promise.total_pages);
+	
 }
+
 

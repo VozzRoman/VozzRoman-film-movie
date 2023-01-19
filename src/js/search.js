@@ -4,7 +4,8 @@ import { fetchGenres } from "./api";
 import { resf } from "./ref";
 import { renderMainPage } from "./main";
 import { showPaginationSearch } from "./pagination";
-
+import { options } from "./pagination";
+import { paginationSearch } from "./pagination";
 
 
 page = 1;
@@ -19,14 +20,16 @@ function clickOnSubmit(e) {
 		
 	if (searchQuery === '') {
 		resf.warrMessage.textContent = 'type something';
-		
 		return;
 	}
 	if (searchQuery.length > 0) {
 		console.log(searchQuery);
 		resf.warrMessage.textContent = '';
 		clearContainer()
-		renderSearchPage().then(res => console.log(res));
+		
+		renderSearchPage()
+		paginationSearch.movePageTo(options.page);
+		
 
 	} else {
 		renderMainPage(page);
@@ -41,7 +44,8 @@ function clickOnSubmit(e) {
 export async function renderSearchPage(page) {
 	try {
 	const promis = await fetchSearch(page, searchQuery);
-	const data = promis.results;
+		const data = promis.results;
+		
 	if (data.length === 0) {
 		resf.warrMessage.textContent = 'no matches in this library';
 		return;
@@ -51,7 +55,10 @@ export async function renderSearchPage(page) {
 		const getGen = await fetchGenres();
 		resf.warrMessage.textContent = '';
 		createMarkUp(data, getGen.genres);
-		// showPaginationSearch(promis.total_pages);
+		
+		showPaginationSearch(promis.total_pages);
+		
+		return data;
 
 
 	} catch (error) {
