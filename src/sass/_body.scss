@@ -32,8 +32,10 @@
 }
 
 .gallery__title {
+	display: inline-block;
 	padding: 10px;
 	font-size: 20px;
+	cursor: pointer;
 }
 
 .gallery__ganre {}

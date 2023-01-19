@@ -6,5 +6,7 @@ export const resf = {
 	containerPagination: document.querySelector('#pagination'),
 	warrMessage: document.querySelector('.input__warrining-message'),
 	mainPagepagination: document.querySelector('.main-page__pagination'),
-	searchPagination: document.querySelector('.search-page__pagination')
+	searchPagination: document.querySelector('.search-page__pagination'),
+	backdrop: document.querySelector('.backdrop'),
+	closeModalButton: document.querySelector('.modal__button-close'),
 }

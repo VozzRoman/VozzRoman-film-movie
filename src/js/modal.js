@@ -1,10 +1,27 @@
 import { resf } from "./ref";
 
 resf.containerFilms.addEventListener('click', onCLickFilm);
+resf.closeModalButton.addEventListener('click', onCLoseClick);
+resf.backdrop.addEventListener('click', onBackDropClick);
+
+
 
 function onCLickFilm(e) {
-    e.preventDefault();
-    if (e.target.nodeName === "H2") {
-        console.log('ok');
-   }
+	e.preventDefault();
+	if (e.target.nodeName !== "H2" && e.target.nodeName !== "IMG") {
+		 return;
+	}
+	document.body.classList.add('is-active__backdrop');
 }
+
+function onCLoseClick() {
+	document.body.classList.remove('is-active__backdrop');
+}
+
+// function onBackDropClick(e) {
+// 	// console.log(e.target);
+// 	console.log(e.curentTarget);
+// 	// if (e.target === e.curentTarget) {
+// 	// 	resf.backdrop.classList.remove('is-active__backdrop');
+// 	// }
+// }
