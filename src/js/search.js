@@ -26,7 +26,7 @@ function clickOnSubmit(e) {
 		console.log(searchQuery);
 		resf.warrMessage.textContent = '';
 		clearContainer()
-		renderSearchPage();
+		renderSearchPage().then(res => console.log(res));
 
 	} else {
 		renderMainPage(page);
@@ -39,6 +39,7 @@ function clickOnSubmit(e) {
 
 
 export async function renderSearchPage(page) {
+	try {
 	const promis = await fetchSearch(page, searchQuery);
 	const data = promis.results;
 	if (data.length === 0) {
@@ -46,15 +47,18 @@ export async function renderSearchPage(page) {
 		return;
 	
 	}
-		console.log(data);
 		clearContainer();
 		const getGen = await fetchGenres();
 		resf.warrMessage.textContent = '';
 		createMarkUp(data, getGen.genres);
 		// showPaginationSearch(promis.total_pages);
-	
 
+
+	} catch (error) {
+		console.log(error)
+	}
 }
+
 
 function clearContainer() {
 	resf.containerFilms.innerHTML = '';
