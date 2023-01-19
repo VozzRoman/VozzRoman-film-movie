@@ -4,9 +4,6 @@ resf.containerFilms.addEventListener('click', onCLickFilm);
 resf.closeModalButton.addEventListener('click', onCLoseClick);
 resf.backdrop.addEventListener('click', onBackDropClick);
 
-
-
-
 function onCLickFilm(e) {
 	e.preventDefault();
 	window.addEventListener('keydown', onEscPress);
@@ -14,6 +11,8 @@ function onCLickFilm(e) {
 		 return;
 	}
 	document.body.classList.add('is-active__backdrop');
+
+	
 }
 
 function onCLoseClick() {
