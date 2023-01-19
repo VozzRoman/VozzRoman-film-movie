@@ -5,6 +5,9 @@ body{
 				visibility: visible;
 				opacity: 1;
 				pointer-events: fill;
+				.modal{
+					transform: scale(1);
+				}
 			}
 		}
 
@@ -24,6 +27,10 @@ body{
 	left: 0;
 	z-index: 999;
 	pointer-events: none;
+	transition: opacity 250ms linear;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 
 
 }
@@ -36,10 +43,9 @@ body{
 	height: 500px;
 	background-color: black;
 	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
 	border-radius: 8px;
+	transform: scale(1.4);
+	transition: transform 250ms linear;
 
 
 }

@@ -19,7 +19,11 @@ function onCLoseClick() {
 	document.body.classList.remove('is-active__backdrop');
 }
 
-function onBackDropClick() {
-	console.log('click backdrpo');
+function onBackDropClick(e) {
+	console.log(e.currentTarget);
+	console.log(e.target);
+	if (e.currentTarget === e.target) {
+		document.body.classList.remove('is-active__backdrop');
+	}
 	
 }
