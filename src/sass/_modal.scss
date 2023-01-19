@@ -4,6 +4,7 @@ body{
 			.backdrop{
 				visibility: visible;
 				opacity: 1;
+				pointer-events: fill;
 			}
 		}
 
@@ -22,7 +23,7 @@ body{
 	top: 0;
 	left: 0;
 	z-index: 999;
-	// pointer-events: none;
+	pointer-events: none;
 
 
 }

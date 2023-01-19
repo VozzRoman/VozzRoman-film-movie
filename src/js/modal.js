@@ -6,6 +6,7 @@ resf.backdrop.addEventListener('click', onBackDropClick);
 
 
 
+
 function onCLickFilm(e) {
 	e.preventDefault();
 	if (e.target.nodeName !== "H2" && e.target.nodeName !== "IMG") {
@@ -18,10 +19,7 @@ function onCLoseClick() {
 	document.body.classList.remove('is-active__backdrop');
 }
 
-// function onBackDropClick(e) {
-// 	// console.log(e.target);
-// 	console.log(e.curentTarget);
-// 	// if (e.target === e.curentTarget) {
-// 	// 	resf.backdrop.classList.remove('is-active__backdrop');
-// 	// }
-// }
+function onBackDropClick() {
+	console.log('click backdrpo');
+	
+}
