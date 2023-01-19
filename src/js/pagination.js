@@ -8,10 +8,7 @@ import { resf } from './ref';
 const mainContainerPaginationContainer = document.getElementById('mainContainerPagination');
 
 
-
-
-
-export const options = {
+const options = {
   totalItems: 200,
   itemsPerPage: 1,
   visiblePages: 8,
@@ -51,8 +48,6 @@ function onPaginationMove({ page }) {
   clearGalary();
   renderMainPage(page);
   
- 
-
 }
 
 export function showPaginationTrended(totalPages) {
