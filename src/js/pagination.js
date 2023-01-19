@@ -5,9 +5,9 @@ import { renderSearchPage } from './search';
 import { resf } from './ref';
 
 
-const mainContainerPagination = document.getElementById('mainContainerPagination');
-const searchPagePagination = document.getElementById('searchPagePagination');
-// resf.searchPagination.style.display = 'none';
+const mainContainerPaginationContainer = document.getElementById('mainContainerPagination');
+
+
 
 
 
@@ -43,9 +43,9 @@ export const options = {
 
 
 //Пагинация популярных фильмов
-const pagination = new Pagination(mainContainerPagination, options)
+const pagination = new Pagination(mainContainerPaginationContainer, options)
 console.log(pagination);
-pagination.on('afterMove', onPaginationMove);
+pagination.on('afterMove', onPaginationMove); //колбек для перелистывания mainPage
 
 function onPaginationMove({ page }) { 
   clearGalary();
@@ -62,22 +62,24 @@ export function showPaginationTrended(totalPages) {
   
 }
 
+//--------------------------------------------
 
 
+
+export function showPaginationSearch(totalPages) {
+const searchPagePaginationContainer = document.getElementById('searchPagePagination');
 // Пагинация поиска фильмов
-export const paginationSearch = new Pagination(searchPagePagination, options)
+const paginationSearch = new Pagination(searchPagePaginationContainer, options)
 console.log(paginationSearch);
-paginationSearch.on('afterMove', onPaginationMove);
-
-function onPaginationMove({ page }) {
-  clearGalary()
+  paginationSearch.on('afterMove', onPaginationSearchMove);
+  
+function onPaginationSearchMove({ page }) { //колбек для перелистывания searchPage
   renderSearchPage(page)
  
 
 }
- export function showPaginationSearch(totalPages) {
   paginationSearch.setTotalItems(totalPages)
-  // paginationSearch.movePageTo(options.page)
+  paginationSearch.movePageTo(options.page) // ререндр пагинаци на первую страницу
   resf.mainPagepagination.style.display = 'none';
   resf.searchPagination.style.display = 'flex';
 }
