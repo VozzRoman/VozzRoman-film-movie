@@ -57,22 +57,21 @@ export function showPaginationTrended(totalPages) {
 
 
 
-//Пагинация поиска фильмов
-// const paginationSearch = new Pagination(container, options)
-// console.log(pagination);
-// paginationSearch.on('afterMove', onPaginationMove);
+// Пагинация поиска фильмов
+const paginationSearch = new Pagination(container, options)
+console.log(pagination);
+paginationSearch.on('afterMove', onPaginationMove);
 
-// function onPaginationMove({ page }) { 
-//   renderSearchPage(page)
-//   clearGalary();
-//   // renderSearchFilms(page)
+function onPaginationMove({ page }) {
+	clearGalary()
+  renderSearchPage(page)
+  // renderSearchFilms(page)
 
-// }
-
-// export function showPaginationSearch(totalPages) {
-//   pagination.setTotalItems(totalPages)
-//   // pagination.movePageTo(options.page)
-// }
+}
+ export function showPaginationSearch(totalPages) {
+  pagination.setTotalItems(totalPages)
+  // pagination.movePageTo(options.page)
+}
 
 function clearGalary() {
   resf.containerFilms.innerHTML = '';

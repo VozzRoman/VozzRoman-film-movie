@@ -36,8 +36,7 @@ export function createMarkUp(data, allGenres) {
 
 function genreId(allGenres, filmGenre) {
 	let newArray = [];
-
-	allGenres.map(item => {
+	allGenres.forEach(item => {
 		if (filmGenre.includes(item.id)) {
 			newArray.push(item.name)
 		}

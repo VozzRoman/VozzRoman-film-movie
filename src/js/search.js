@@ -8,15 +8,14 @@ import { showPaginationSearch } from "./pagination";
 
 
 page = 1;
-
-
+let searchQuery = '';
 
 resf.formEl.addEventListener('submit', clickOnSubmit);
 
 function clickOnSubmit(e) {
 	e.preventDefault();
 	console.log(e.currentTarget.elements.search.value);
-	let searchQuery = e.currentTarget.elements.search.value;
+	searchQuery = e.currentTarget.elements.search.value;
 		
 	if (searchQuery === '') {
 		resf.warrMessage.textContent = 'type something';
@@ -26,7 +25,8 @@ function clickOnSubmit(e) {
 	if (searchQuery.length > 0) {
 		console.log(searchQuery);
 		resf.warrMessage.textContent = '';
-		renderSearchPage(page, searchQuery);
+		clearContainer()
+		renderSearchPage();
 
 	} else {
 		renderMainPage(page);
@@ -38,8 +38,8 @@ function clickOnSubmit(e) {
 
 
 
-export async function renderSearchPage(page, query) {
-	const promis = await fetchSearch(page, query);
+export async function renderSearchPage(page) {
+	const promis = await fetchSearch(page, searchQuery);
 	const data = promis.results;
 	if (data.length === 0) {
 		resf.warrMessage.textContent = 'no matches in this library';
