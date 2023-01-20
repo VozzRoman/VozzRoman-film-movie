@@ -10,10 +10,10 @@ export function createMarkUp(data, allGenres) {
 		const year = new Date(release_date).getFullYear();
 		console.log(idGenre);
 		return `
-			<li class="gallery__item" data-id="${id}">
+			<li class="gallery__item" >
 					<a href="" class="gallery__link">
 						<div class="gallery__vote">${vote_average.toFixed(1)}</div>
-						<img src="${poster_path === null ? defaultPic : filmPoster}" alt="${title}" >
+						<img src="${poster_path === null ? defaultPic : filmPoster}" alt="${title}" data-id="${id}">
 					</a>
 					<div class="gallery__info">
 						<h2 class="gallery__title">${!title ? name : title}</h2>

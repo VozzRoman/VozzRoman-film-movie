@@ -11,6 +11,8 @@ function onCLickFilm(e) {
 		 return;
 	}
 	document.body.classList.add('is-active__backdrop');
+	const id = Number(e.target.dataset.id);
+	console.log(id);
 
 	
 }
