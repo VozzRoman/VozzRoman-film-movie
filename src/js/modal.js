@@ -50,8 +50,11 @@ function onEscPress(e) {
 defaultImage = 'https://png.pngtree.com/thumb_back/fh260/back_our/20190622/ourmid/pngtree-minimalist-film-festival-film-and-tv-movie-poster-image_220289.jpg';
 
 function createMarkUp(data) {
-	const { poster_path, title, vote_count, vote_average, popularity, original_title, overview} = data;
+	const { poster_path, title, vote_count, vote_average, popularity, original_title, genres, overview} = data;
 	let filmPoster = `https://image.tmdb.org/t/p/w500${poster_path}`;
+	
+	const newGenre = genres.map(el => el.name);
+	console.log(newGenre[0]);
 	const markUp = `
 		<ul class="card__list">
 					<li class="card__item">
@@ -65,7 +68,7 @@ function createMarkUp(data) {
 						</div>
 						<div class="card__info">
 							<p class="card__info-name">Popularity</p>
-							<p class="card__info-result">${popularity}</p>
+							<p class="card__info-result">${popularity.toFixed(0)}</p>
 						</div>
 						<div class="card__info">
 							<p class="card__info-name">Original Title</p>
@@ -73,7 +76,7 @@ function createMarkUp(data) {
 						</div>
 						<div class="card__info">
 							<p class="card__info-name">Genre</p>
-							<p class="card__info-result">Action</p>
+							<p class="card__info-result">${newGenre[0]}</p>
 						</div>
 						<h2 class="card__about">About</h2>
 
