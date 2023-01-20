@@ -15,7 +15,7 @@ function onCLickFilm(e) {
 	const id = Number(e.target.dataset.id);
 	console.log(id);
 
-	fetchById(id).then(res => console.log(res));
+	fetchById(id).then(res => createMarkUp(res));
 
 	
 }
@@ -23,6 +23,8 @@ function onCLickFilm(e) {
 function onCLoseClick() {
 	document.body.classList.remove('is-active__backdrop');
 	window.removeEventListener('keydown', onEscPress);
+	clearContainer();
+	
 }
 
 function onBackDropClick(e) {
@@ -30,6 +32,7 @@ function onBackDropClick(e) {
 	console.log(e.target);
 	if (e.currentTarget === e.target) {
 		document.body.classList.remove('is-active__backdrop');
+		clearContainer();
 	}
 	
 }
@@ -44,38 +47,47 @@ function onEscPress(e) {
 
 
 //-----------render
+defaultImage = 'https://png.pngtree.com/thumb_back/fh260/back_our/20190622/ourmid/pngtree-minimalist-film-festival-film-and-tv-movie-poster-image_220289.jpg';
 
 function createMarkUp(data) {
+	const { poster_path, title, vote_count, vote_average, popularity, original_title, overview} = data;
+	let filmPoster = `https://image.tmdb.org/t/p/w500${poster_path}`;
 	const markUp = `
 		<ul class="card__list">
 					<li class="card__item">
-						<img src="" alt="">
+						<img src="${poster_path === null ? defaultImage : filmPoster}" alt="${title}">
 					</li>
 					<li class="card__item">
-						<h1 class="card__title"></h1>
+						<h1 class="card__title">${title}</h1>
 						<div class="card__info">
-							<p class="card__info-name"></p>
-							<p class="card__info-result"></p>
+							<p class="card__info-name">Vote / Votes</p>
+							<p class="card__info-result">${vote_count}/${vote_average}</p>
 						</div>
 						<div class="card__info">
-							<p class="card__info-name"></p>
-							<p class="card__info-result"></p>
+							<p class="card__info-name">Popularity</p>
+							<p class="card__info-result">${popularity}</p>
 						</div>
 						<div class="card__info">
-							<p class="card__info-name"></p>
-							<p class="card__info-result"></p>
+							<p class="card__info-name">Original Title</p>
+							<p class="card__info-result">${original_title}</p>
 						</div>
 						<div class="card__info">
-							<p class="card__info-name"></p>
-							<p class="card__info-result"></p>
+							<p class="card__info-name">Genre</p>
+							<p class="card__info-result">Action</p>
 						</div>
-						<h2 class="card__about"></h2>
+						<h2 class="card__about">About</h2>
 
-						<p class="card__text"></p>
+						<p class="card__text">${overview}</p>
 
 						
 					</li>
 				</ul>
 	
-	`
+	`;
+	resf.modalContainerFilm.insertAdjacentHTML('beforeend', markUp);
+}
+
+
+function clearContainer() {
+	resf.modalContainerFilm.innerHTML = '';
 }

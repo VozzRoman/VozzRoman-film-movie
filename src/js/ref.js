@@ -9,4 +9,5 @@ export const resf = {
 	searchPagination: document.querySelector('.search-page__pagination'),
 	backdrop: document.querySelector('.backdrop'),
 	closeModalButton: document.querySelector('.modal__button-close'),
+	modalContainerFilm: document.querySelector('.modal__film-card-list'),
 }
