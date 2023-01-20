@@ -15,7 +15,7 @@ function onCLickFilm(e) {
 	const id = Number(e.target.dataset.id);
 	console.log(id);
 
-	fetchById(id).then(res => createMarkUp(res));
+	fetchById(id).then(res => createMarkUp(res)).catch(error => console.log(error));
 
 	
 }
@@ -50,7 +50,7 @@ function onEscPress(e) {
 defaultImage = 'https://png.pngtree.com/thumb_back/fh260/back_our/20190622/ourmid/pngtree-minimalist-film-festival-film-and-tv-movie-poster-image_220289.jpg';
 
 function createMarkUp(data) {
-	const { poster_path, title, vote_count, vote_average, popularity, original_title, genres, overview} = data;
+	const { poster_path, title, vote_count, vote_average, popularity, original_title, genres, overview, name} = data;
 	let filmPoster = `https://image.tmdb.org/t/p/w500${poster_path}`;
 	
 	const newGenre = genres.map(el => el.name);
@@ -58,17 +58,17 @@ function createMarkUp(data) {
 	const markUp = `
 		<ul class="card__list">
 					<li class="card__item">
-						<img src="${poster_path === null ? defaultImage : filmPoster}" alt="${title}">
+						<img src="${poster_path === null ? defaultImage : filmPoster || backdrop_path}" alt="${title}">
 					</li>
 					<li class="card__item">
-						<h1 class="card__title">${title}</h1>
+						<h1 class="card__title">${!title ? name : title}</h1>
 						<div class="card__info">
 							<p class="card__info-name">Vote / Votes</p>
-							<p class="card__info-result"><span>${vote_count}</span> / ${vote_average}</p>
+							<p class="card__info-result"><span>${vote_average.toFixed(1)}</span> / ${vote_count}</p>
 						</div>
 						<div class="card__info">
 							<p class="card__info-name">Popularity</p>
-							<p class="card__info-result">${popularity.toFixed(0)}</p>
+							<p class="card__info-result">${popularity.toFixed(1)}</p>
 						</div>
 						<div class="card__info">
 							<p class="card__info-name">Original Title</p>
