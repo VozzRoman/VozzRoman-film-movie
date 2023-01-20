@@ -41,3 +41,41 @@ function onEscPress(e) {
 	}
 	
 }
+
+
+//-----------render
+
+function createMarkUp(data) {
+	const markUp = `
+		<ul class="card__list">
+					<li class="card__item">
+						<img src="" alt="">
+					</li>
+					<li class="card__item">
+						<h1 class="card__title"></h1>
+						<div class="card__info">
+							<p class="card__info-name"></p>
+							<p class="card__info-result"></p>
+						</div>
+						<div class="card__info">
+							<p class="card__info-name"></p>
+							<p class="card__info-result"></p>
+						</div>
+						<div class="card__info">
+							<p class="card__info-name"></p>
+							<p class="card__info-result"></p>
+						</div>
+						<div class="card__info">
+							<p class="card__info-name"></p>
+							<p class="card__info-result"></p>
+						</div>
+						<h2 class="card__about"></h2>
+
+						<p class="card__text"></p>
+
+						
+					</li>
+				</ul>
+	
+	`
+}
