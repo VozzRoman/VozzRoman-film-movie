@@ -40,14 +40,16 @@ body{
 
 
 .modal{
-	position: absolute;
+	
 	width: 806px;
 	height: 558px;
 	background-color: black;
-	position: absolute;
 	border-radius: 8px;
 	transform: scale(1.4);
 	transition: transform 250ms linear;
+	overflow: hidden;
+	padding: 20px;
+	
 
 
 }
@@ -60,3 +62,63 @@ body{
 
 
 //---------render
+
+.card__list {
+	display: flex;
+}
+.card__item {
+	flex: 1 0 50%;
+	// height: 558px;
+	img{
+	display: block;
+	width: 100%;
+	height: 520px;
+	border-radius: 8px;
+	}
+	&:not(:last-child){
+		margin-right: 20px;
+	}
+}
+.card__title {
+	color: white;
+	margin-bottom: 10px;
+	margin-top: 20px;
+}
+.card__info {
+	display: flex;
+	justify-content: space-between;
+	&:not(:last-child){
+		margin-bottom: 3px;
+	}
+
+	
+}
+.card__info-name {
+	flex: 0 0 30%;
+	font-size: 12px;
+	line-height: 1.333;
+	color: white;
+
+}
+.card__info-result {
+	font-size: 12px;
+	line-height: 1.333;
+	font-weight: 600;
+	flex: 0 0 70%;
+	color: white;
+	span{
+		background-color: orange;
+		border-radius: 4px;
+		padding: 2px 4px;
+
+	}
+}
+.card__about {
+	margin-top: 10px;
+	color: white;
+	margin-bottom: 10px;
+}
+.card__text {
+	color: white;
+	width: 340px;
+}

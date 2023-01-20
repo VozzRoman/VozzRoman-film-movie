@@ -16,7 +16,7 @@ export function createMarkUp(data, allGenres) {
 						<img src="${poster_path === null ? defaultPic : filmPoster}" alt="${title}" data-id="${id}">
 					</a>
 					<div class="gallery__info">
-						<h2 class="gallery__title" data-id="${id}>${!title ? name : title}</h2>
+						<h2 class="gallery__title">${!title ? name : title}</h2>
 						<div class="gallery__box">
 							<p class="gallery__ganre">${idGenre}</p>
 							<p class="gallery__year">${year}</p>

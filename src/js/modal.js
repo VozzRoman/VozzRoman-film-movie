@@ -61,7 +61,7 @@ function createMarkUp(data) {
 						<h1 class="card__title">${title}</h1>
 						<div class="card__info">
 							<p class="card__info-name">Vote / Votes</p>
-							<p class="card__info-result">${vote_count}/${vote_average}</p>
+							<p class="card__info-result"><span>${vote_count}</span> / ${vote_average}</p>
 						</div>
 						<div class="card__info">
 							<p class="card__info-name">Popularity</p>
