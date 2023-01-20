@@ -82,6 +82,8 @@ function createMarkUp(data) {
 
 						<p class="card__text">${overview}</p>
 
+					<button class="button__modal">add to Watched</button>
+					<button class="button__modal">add to queue</button>
 						
 					</li>
 				</ul>

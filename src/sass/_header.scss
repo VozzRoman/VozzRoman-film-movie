@@ -49,6 +49,15 @@
     &:not(:last-child) {
         margin-right: 20px;
     }
+	 	 &.active {
+	      &::after {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 2px;
+            background-color: red;
+            opacity: 1;
+        }
 }
 
 .header__nav-link {
@@ -78,7 +87,12 @@
 
     }
 
+
+
 }
+
+}
+
 
 .header__form {
     display: flex;

@@ -1,3 +1,4 @@
+import './js/header';
 import './js/main';
 import './js/api';
 import './js/search';

@@ -1,0 +1,22 @@
+.footer {
+	height: 80px;
+	background-color: gray;
+}
+
+.footer__container{
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.footer__list {
+	display: flex;
+}
+.footer__item {
+	&:not(:last-child){
+		margin-right: 20px;
+	}
+}
+.foote__link {
+	color: white;
+}

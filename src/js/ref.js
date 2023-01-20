@@ -10,4 +10,8 @@ export const resf = {
 	backdrop: document.querySelector('.backdrop'),
 	closeModalButton: document.querySelector('.modal__button-close'),
 	modalContainerFilm: document.querySelector('.modal__film-card-list'),
+	headerNavLink: document.querySelectorAll('.header__nav-item'),
+	headerNavList: document.querySelector('.hrader__nav-list'),
 }
+
+
