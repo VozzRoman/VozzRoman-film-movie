@@ -2,9 +2,10 @@
 
 const KEY__API = '45e036602b450491912e4761702a27c4';
 //Varibles TDM
+const MAIN__URL = `https://api.themoviedb.org/3/movie/`
 const TRAIDIN__URL = `https://api.themoviedb.org/3/trending/all/day?api_key=${KEY__API}`;
 const SEARCH__URL = `https://api.themoviedb.org/3/search/movie?api_key=${KEY__API}&language=en-US&page=1&include_adult=false`;
-
+const GET_ID = `https://api.themoviedb.org/3/movie/{movie_id}?api_key=${KEY__API}&language=en-US`
 const GENERS__URL = 'https://api.themoviedb.org/3/genre/movie/list?api_key=45e036602b450491912e4761702a27c4&language=en-US'
 
 // const MOVIE__ID = 'https://api.themoviedb.org/3/movie/{movie_id}?api_key=45e036602b450491912e4761702a27c4&language=en-US'
@@ -30,3 +31,10 @@ export async function fetchSearch(page, query) {
 	const data = response.json();
 	return data;
 }
+
+export async function fetchById(id) {
+	const response = await fetch(MAIN__URL + `${id}?api_key=${KEY__API}&language=en-US`);
+	const data = response.json();
+	return data;
+}
+

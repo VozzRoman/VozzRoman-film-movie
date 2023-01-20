@@ -1,4 +1,5 @@
 import { resf } from "./ref";
+import { fetchById } from "./api";
 
 resf.containerFilms.addEventListener('click', onCLickFilm);
 resf.closeModalButton.addEventListener('click', onCLoseClick);
@@ -13,6 +14,8 @@ function onCLickFilm(e) {
 	document.body.classList.add('is-active__backdrop');
 	const id = Number(e.target.dataset.id);
 	console.log(id);
+
+	fetchById(id).then(res => console.log(res));
 
 	
 }
