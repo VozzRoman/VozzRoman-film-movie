@@ -28,9 +28,10 @@ export function saveLoadFilm() {
 			const data = promise;
 			console.log(data);
 			putData(data);
-			const film = getData();
-			console.log(film);
-			film.map(el => console.log(el.id));
+			
+			// const film = getData();
+			// console.log(film);
+			// film.map(el => console.log(el.id));
 			
 	
 			}
@@ -40,7 +41,7 @@ export function saveLoadFilm() {
 }
 
 
-function getData(){
+export function getData(){
 	const dataLocalStorage = localStorage.getItem(LOCAL__KEY);
 	if(dataLocalStorage !== null) {
 		return JSON.parse(dataLocalStorage);
@@ -48,7 +49,7 @@ function getData(){
 	return [];
 }
 
-function putData(data){ 
+export function putData(data){ 
 	let filmCard = getData();
 	filmCard.push(data);
 	localStorage.setItem(LOCAL__KEY, JSON.stringify(filmCard));
