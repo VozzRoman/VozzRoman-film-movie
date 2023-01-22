@@ -6,14 +6,17 @@ const LOCAL__KEY = 'filmLibarary';
 
 
 
-export  function saveLoadFilm() {
+export function saveLoadFilm() {
+	
+	
+
 		setTimeout(() => {
 		const buttonList = document.querySelector('.button__list');
 		console.log(buttonList);
 		buttonList.addEventListener('click', clickOnModalButton);
 			async function clickOnModalButton(e) {
 
-			// let libararyArray = [];
+			
 				
 			if (e.target.nodeName !== 'BUTTON') {
 				return;
@@ -24,15 +27,13 @@ export  function saveLoadFilm() {
 			const promise = await fetchById(id);
 			const data = promise;
 			console.log(data);
-			const libaray = localStorage.getItem(LOCAL__KEY);
-				if (libaray === null) {
-				
-				localStorage.setItem(LOCAL__KEY, JSON.stringify(data));
-					console.log(localStorage.getItem(LOCAL__KEY));
-				
-		
+			let localData = JSON.parse(localStorage.getItem(LOCAL__KEY));
+			if (!localData) {
+				localData = [];
+			}
+				localData.push(data);
 			}
 			
-		}
+			
 	},500);
 }
