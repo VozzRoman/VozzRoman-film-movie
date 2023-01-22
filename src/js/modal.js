@@ -5,8 +5,11 @@ resf.containerFilms.addEventListener('click', onCLickFilm);
 resf.closeModalButton.addEventListener('click', onCLoseClick);
 resf.backdrop.addEventListener('click', onBackDropClick);
 
-function onCLickFilm(e) {
+async function onCLickFilm(e) {
 	e.preventDefault();
+
+
+
 	window.addEventListener('keydown', onEscPress);
 	if (e.target.nodeName !== "H2" && e.target.nodeName !== "IMG") {
 		 return;
@@ -17,8 +20,25 @@ function onCLickFilm(e) {
 
 	fetchById(id).then(res => createMarkUp(res)).catch(error => console.log(error));
 
-	
+
+
+	setTimeout(() => {
+		const buttonList = document.querySelector('.button__list');
+		console.log(buttonList);
+		buttonList.addEventListener('click', clickOnModalButton);
+		function clickOnModalButton(e) {
+			if (e.target.nodeName !== 'BUTTON') {
+				return;
+			}
+			console.log('ok');
+		}
+	},100);
 }
+
+	
+
+
+
 
 function onCLoseClick() {
 	document.body.classList.remove('is-active__backdrop');
@@ -28,24 +48,15 @@ function onCLoseClick() {
 }
 
 function onBackDropClick(e) {
-	console.log(e.currentTarget);
-	console.log(e.target);
+	// console.log(e.currentTarget);
+	// console.log(e.target);
 	if (e.currentTarget === e.target) {
 		document.body.classList.remove('is-active__backdrop');
 		clearContainer();
 	}
 
-	console.log(resf.buttonList);
-	resf.buttonList.addEventListener('click', clickOnButton);
 
-function clickOnButton(e) {
-	console.log('jr');
-	if (e.target.nodeName !== 'button') {
-		return;
-	}
-	console.log('ok');
-	
-}
+
 	
 }
 
@@ -94,7 +105,7 @@ function createMarkUp(data) {
 
 						<p class="card__text">${overview}</p>
 					<div class="button__list">
-					<button class="button__modal">add to Watched</button>
+					<button class="button__modal" id="add-watch">add to Watched</button>
 					<button class="button__modal">add to queue</button>
 					</div>	
 					</li>
