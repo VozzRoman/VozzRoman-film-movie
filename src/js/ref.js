@@ -13,6 +13,7 @@ export const resf = {
 	headerNavLink: document.querySelectorAll('.header__nav-item'),
 	headerNavList: document.querySelector('.hrader__nav-list'),
 	buttonList: document.querySelector('.button__list'),
+	libraryListContainer: document.querySelector('.library__list'),
 }
 
 

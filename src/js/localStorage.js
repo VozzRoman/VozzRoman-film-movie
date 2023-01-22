@@ -27,15 +27,12 @@ export function saveLoadFilm() {
 			const promise = await fetchById(id);
 			const data = promise;
 			console.log(data);
-			putData(data);
-			
+				putData(data);
 			// const film = getData();
 			// console.log(film);
 			// film.map(el => console.log(el.id));
 			
-	
 			}
-			
 			
 	},500);
 }
