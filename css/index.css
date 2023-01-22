@@ -1,5 +1,9 @@
 @charset "UTF-8";
 @import '~node_modules/modern-normalize/modern-normalize.css';
+.header {
+  margin-bottom: 40px;
+}
+
 .header__container {
   background-repeat: no-repeat;
   background-image: url("../images/back-heder.jpg");
@@ -38,13 +42,20 @@
 .header__nav-item:not(:last-child) {
   margin-right: 20px;
 }
-
-.header__nav-link {
+.header__nav-item.active::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: red;
+  opacity: 1;
+}
+.header__nav-item .header__nav-link {
   color: white;
   text-decoration: none;
   text-transform: uppercase;
 }
-.header__nav-link::after {
+.header__nav-item .header__nav-link::after {
   content: "";
   opacity: 0;
   display: block;
@@ -53,7 +64,7 @@
   background-color: red;
   transition: opacity 450ms linear;
 }
-.header__nav-link:hover::after {
+.header__nav-item .header__nav-link:hover::after {
   content: "";
   display: block;
   width: 100%;
@@ -68,6 +79,17 @@
   padding-bottom: 20px;
 }
 
+.header__button {
+  display: block;
+}
+
+.input__warrining-message {
+  text-align: center;
+  display: block;
+  padding-bottom: 20px;
+  color: red;
+}
+
 .sectino__container {
   margin-right: auto;
 }
@@ -79,35 +101,54 @@
   margin-bottom: -10px;
 }
 
-.body__item {
-  flex-basis: calc(33.3333333333% - 10px);
+.gallery__item {
+  position: relative;
+  flex-basis: calc(25% - 10px);
   margin-left: 10px;
   margin-bottom: 10px;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid gray;
 }
 
-.pagination__list {
+.gallery__info {
+  padding: 20px;
+}
+
+.gallery__title {
+  display: inline-block;
+  margin-bottom: 5px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.gallery__box {
   display: flex;
-  margin-bottom: 30px;
-  margin-top: 30px;
-  justify-content: center;
 }
 
-.pagination__item:not(:last-child) {
-  margin-right: 20px;
+.gallery__ganre {
+  display: inline-block;
+  margin-right: 10px;
+  border-right: 1px solid orange;
+  padding-right: 5px;
+  color: orange;
 }
 
-.pagination__link {
+.gallery__year {
+  color: orange;
+}
+
+.gallery__vote {
+  position: absolute;
+  top: 5px;
+  left: 5px;
   display: flex;
   align-items: center;
+  justify-content: center;
   padding: 5px 10px;
-  background-color: gray;
-  border: 1px solid black;
-  border-radius: 4px;
-  text-decoration: none;
-  color: white;
-}
-.pagination__link.active {
   background-color: orange;
+  border-radius: 3px;
+  color: white;
 }
 
 .container {
@@ -140,12 +181,35 @@ p, h1, h2, h3, h4, h5 {
   margin: 0;
 }
 
-.pagination__list {
-  display: flex;
-  align-items: center;
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
 }
 
-.tui-page-btn {
+body {
+  background-color: white;
+  width: 100%;
+  height: 100%;
+}
+
+.wrapper {
+  height: calc(100vh - 80px);
+}
+
+.main-page__pagination {
+  align-items: center;
+  padding: 20px 0;
+  justify-content: center;
+}
+
+.search-page__pagination {
+  align-items: center;
+  padding: 20px 0;
+  justify-content: center;
+}
+
+.pagination-page-button {
   display: flex;
   font-size: 13px;
   align-items: center;
@@ -158,44 +222,49 @@ p, h1, h2, h3, h4, h5 {
   color: black;
   text-decoration: none;
 }
-.tui-page-btn:not(:last-child) {
+.pagination-page-button:not(:last-child) {
   margin-right: 5px;
 }
-.tui-page-btn:hover, .tui-page-btn :focus {
+.pagination-page-button:hover, .pagination-page-button :focus {
   background-color: orange;
   color: white;
 }
 
-.tui-is-selected {
+.pagination-active-button {
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 50px;
+  height: 40px;
   border-radius: 5px;
-  padding: 5px;
+  padding: 10px;
   background-color: orange;
   text-decoration: none;
+  margin: 5px;
   color: white;
 }
 
-.tui-ico-prev {
+.pag-ico-prev {
   position: relative;
+  text-decoration: none;
   opacity: 1;
   color: transparent;
 }
-.tui-ico-prev::before {
+.pag-ico-prev::before {
   content: "←";
   position: absolute;
   top: 0;
-  left: 0;
+  left: 50%;
   color: black;
+  transform: translateX(-50%);
 }
 
-.tui-ico-next {
+.pag-ico-next {
   position: relative;
   opacity: 1;
   color: transparent;
 }
-.tui-ico-next::before {
+.pag-ico-next::before {
   content: "→";
   position: absolute;
   top: 0;
@@ -203,10 +272,173 @@ p, h1, h2, h3, h4, h5 {
   color: black;
 }
 
-.tui-first {
-  display: none;
+.pag-ico-first {
+  display: block;
+  text-decoration: none;
 }
 
 .tui-last {
   display: none;
+}
+
+body.is-active__backdrop .backdrop {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: fill;
+}
+body.is-active__backdrop .backdrop .modal {
+  transform: scale(1);
+}
+
+.backdrop {
+  visibility: hidden;
+  opacity: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: hsla(0deg, 0%, 50%, 0.8);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  pointer-events: none;
+  transition: opacity 250ms linear;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  width: 806px;
+  height: 558px;
+  background-color: black;
+  border-radius: 8px;
+  transform: scale(1.4);
+  transition: transform 250ms linear;
+  overflow: hidden;
+  padding: 20px;
+}
+
+.modal__button-close {
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  color: white;
+  background-color: orange;
+  transition: background-color 250ms linear;
+}
+.modal__button-close:hover, .modal__button-close :focus {
+  background-color: orangered;
+}
+
+.card__list {
+  display: flex;
+}
+
+.card__item {
+  flex: 1 0 50%;
+}
+.card__item img {
+  display: block;
+  width: 100%;
+  height: 520px;
+  border-radius: 8px;
+}
+.card__item:not(:last-child) {
+  margin-right: 20px;
+}
+
+.card__title {
+  color: white;
+  margin-bottom: 10px;
+  margin-top: 20px;
+}
+
+.card__info {
+  display: flex;
+  justify-content: space-between;
+}
+.card__info:not(:last-child) {
+  margin-bottom: 3px;
+}
+
+.card__info-name {
+  flex: 0 0 30%;
+  font-size: 12px;
+  line-height: 1.333;
+  color: white;
+}
+
+.card__info-result {
+  font-size: 12px;
+  line-height: 1.333;
+  font-weight: 600;
+  flex: 0 0 70%;
+  color: white;
+}
+.card__info-result span {
+  background-color: orange;
+  border-radius: 4px;
+  padding: 2px 4px;
+}
+
+.card__about {
+  margin-top: 10px;
+  color: white;
+  margin-bottom: 10px;
+}
+
+.card__text {
+  color: white;
+  width: 340px;
+  font-size: 12px;
+  line-height: 1.3;
+  margin-bottom: 20px;
+}
+
+.button__modal {
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 136px;
+  height: 44px;
+  border: none;
+  border-radius: 4px;
+  background-color: orange;
+  color: white;
+  transition: background-color 250ms linear;
+}
+.button__modal:not(:last-child) {
+  margin-right: 5px;
+}
+.button__modal:hover, .button__modal :focus {
+  background-color: orangered;
+}
+
+.footer {
+  height: 80px;
+  background-color: gray;
+}
+
+.footer__container {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer__list {
+  display: flex;
+}
+
+.footer__item:not(:last-child) {
+  margin-right: 20px;
+}
+
+.foote__link {
+  color: white;
 }

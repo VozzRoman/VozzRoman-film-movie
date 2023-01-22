@@ -12,6 +12,7 @@ export const resf = {
 	modalContainerFilm: document.querySelector('.modal__film-card-list'),
 	headerNavLink: document.querySelectorAll('.header__nav-item'),
 	headerNavList: document.querySelector('.hrader__nav-list'),
+	buttonList: document.querySelector('.button__list'),
 }
 
 

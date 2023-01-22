@@ -34,6 +34,18 @@ function onBackDropClick(e) {
 		document.body.classList.remove('is-active__backdrop');
 		clearContainer();
 	}
+
+	console.log(resf.buttonList);
+	resf.buttonList.addEventListener('click', clickOnButton);
+
+function clickOnButton(e) {
+	console.log('jr');
+	if (e.target.nodeName !== 'button') {
+		return;
+	}
+	console.log('ok');
+	
+}
 	
 }
 
@@ -81,10 +93,10 @@ function createMarkUp(data) {
 						<h2 class="card__about">About</h2>
 
 						<p class="card__text">${overview}</p>
-
+					<div class="button__list">
 					<button class="button__modal">add to Watched</button>
 					<button class="button__modal">add to queue</button>
-						
+					</div>	
 					</li>
 				</ul>
 	
@@ -96,3 +108,6 @@ function createMarkUp(data) {
 function clearContainer() {
 	resf.modalContainerFilm.innerHTML = '';
 }
+
+
+
