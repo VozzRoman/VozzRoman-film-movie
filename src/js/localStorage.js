@@ -27,13 +27,30 @@ export function saveLoadFilm() {
 			const promise = await fetchById(id);
 			const data = promise;
 			console.log(data);
-			let localData = JSON.parse(localStorage.getItem(LOCAL__KEY));
-			if (!localData) {
-				localData = [];
-			}
-				localData.push(data);
+			putData(data);
+			const film = getData();
+			console.log(film);
+			film.map(el => console.log(el.id));
+			
+	
 			}
 			
 			
 	},500);
+}
+
+
+function getData(){
+	const dataLocalStorage = localStorage.getItem(LOCAL__KEY);
+	if(dataLocalStorage !== null) {
+		return JSON.parse(dataLocalStorage);
+	}
+	return [];
+}
+
+function putData(data){ 
+	let filmCard = getData();
+	filmCard.push(data);
+	localStorage.setItem(LOCAL__KEY, JSON.stringify(filmCard));
+
 }
