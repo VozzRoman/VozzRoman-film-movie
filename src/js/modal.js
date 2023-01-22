@@ -1,11 +1,11 @@
 import { resf } from "./ref";
 import { fetchById } from "./api";
-
+import { saveLoadFilm } from "./localStorage";
 resf.containerFilms.addEventListener('click', onCLickFilm);
 resf.closeModalButton.addEventListener('click', onCLoseClick);
 resf.backdrop.addEventListener('click', onBackDropClick);
 
-async function onCLickFilm(e) {
+function onCLickFilm(e) {
 	e.preventDefault();
 
 
@@ -16,23 +16,13 @@ async function onCLickFilm(e) {
 	}
 	document.body.classList.add('is-active__backdrop');
 	const id = Number(e.target.dataset.id);
-	console.log(id);
+	// console.log(id);
 
 	fetchById(id).then(res => createMarkUp(res)).catch(error => console.log(error));
 
+	saveLoadFilm();
 
 
-	setTimeout(() => {
-		const buttonList = document.querySelector('.button__list');
-		console.log(buttonList);
-		buttonList.addEventListener('click', clickOnModalButton);
-		function clickOnModalButton(e) {
-			if (e.target.nodeName !== 'BUTTON') {
-				return;
-			}
-			console.log('ok');
-		}
-	},100);
 }
 
 	
@@ -73,7 +63,7 @@ function onEscPress(e) {
 defaultImage = 'https://png.pngtree.com/thumb_back/fh260/back_our/20190622/ourmid/pngtree-minimalist-film-festival-film-and-tv-movie-poster-image_220289.jpg';
 
 function createMarkUp(data) {
-	const { poster_path, title, vote_count, vote_average, popularity, original_title, genres, overview, name} = data;
+	const { poster_path, title, vote_count, vote_average, popularity, original_title, genres, overview, name, id} = data;
 	let filmPoster = `https://image.tmdb.org/t/p/w500${poster_path}`;
 	
 	const newGenre = genres.map(el => el.name);
@@ -105,7 +95,7 @@ function createMarkUp(data) {
 
 						<p class="card__text">${overview}</p>
 					<div class="button__list">
-					<button class="button__modal" id="add-watch">add to Watched</button>
+					<button class="button__modal" id="add-watch" data-id="${id}">add to Watched</button>
 					<button class="button__modal">add to queue</button>
 					</div>	
 					</li>
