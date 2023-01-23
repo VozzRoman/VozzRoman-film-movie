@@ -57,8 +57,14 @@ export function getData(){
 }
 
 export function putData(data){ 
-	let filmCard = getData();
-	filmCard.push(data);
+	let filmCard = getData(); // []
+	const index = filmCard.indexOf(data);
+	if (index === -1) {
+		filmCard.push(data);
+	} else {
+		filmCard.splice(index, 1);
+	}
+	
 	localStorage.setItem(LOCAL__KEY, JSON.stringify(filmCard));
 
 }

@@ -5,6 +5,7 @@ console.log('ok');
 
 async function getLocalDataAndRender() {
 	const id = getData();
+	console.log(id)
 
 	let filteredId = [];
 
