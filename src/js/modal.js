@@ -22,8 +22,7 @@ function onCLickFilm(e) {
 	fetchById(id).then(res => createMarkUp(res)).catch(error => console.log(error));
 
 	saveLoadFilm();
-	const addButton = localStorage.getItem(KEY__BUTTON);
-	JSON.parse(addButton);
+
 
 }
 
@@ -97,8 +96,8 @@ function createMarkUp(data) {
 
 						<p class="card__text">${overview}</p>
 					<div class="button__list">
-					<button class="button__modal" id="add-watch" data-id="${id}"></button>
-					<button class="button__modal" id="remove-wached">remove from library</button>
+					<button type="submit" class="button__modal" id="add-watch" data-id="${id}"></button>
+					<button type="submit" class="button__modal" id="remove-wached" data-del="${id}"></button>
 					</div>	
 					</li>
 				</ul>
