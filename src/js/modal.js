@@ -96,7 +96,7 @@ function createMarkUp(data) {
 						<p class="card__text">${overview}</p>
 					<div class="button__list">
 					<button class="button__modal" id="add-watch" data-id="${id}">add to Watched</button>
-					<button class="button__modal" id="remove-wached" data-id="${id}>remove from library</button>
+					<button class="button__modal" id="remove-wached">remove from library</button>
 					</div>	
 					</li>
 				</ul>
