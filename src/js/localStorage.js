@@ -19,23 +19,13 @@ export function saveLoadFilm() {
 		console.log(addButton);
 			addButton.addEventListener('click', clickOnModalButton);
 		
-			let id = null;
-			getData();
 			async function clickOnModalButton(e) {
-				let newArray = [];
+				
 			
 			id = Number(e.target.dataset.id);
-				// console.log(id);
-				putData(id);
-				const sameId = getData();
-				for (let id of sameId) {
-					if (sameId.includes(id)) {
-						newArray.push(id);
-						console.log(newArray);
-						return newArray;
-					}
+			putData(id);
+			
 				
-				}
 				
 				
 			// const promise = await fetchById(id);
@@ -73,19 +63,6 @@ export function deleteStorage() {
 	localStorage.removeItem(LOCAL__KEY);
 }
 
-//----localButton
 
-// export function getButton(){
-// 	const dataLocalStorage = localStorage.getItem(KEY__BUTTON);
-// 	if(dataLocalStorage !== null) {
-// 		return JSON.parse(dataLocalStorage);
-// 	}
-// 	return [];
-// }
 
-// export function putButton(data){ 
-// 	let filmCardBth = getData();
-// 	filmCardBth.push(data);
-// 	localStorage.setItem(KEY__BUTTON, JSON.stringify(filmCardBth));
 
-// }

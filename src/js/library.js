@@ -5,8 +5,19 @@ console.log('ok');
 
 async function getLocalDataAndRender() {
 	const id = getData();
-	console.log(id);
-	 const arrayOfpromis = id.map(async el => {
+
+	let filteredId = [];
+
+	for (let i = 0; i < id.length; i++) {
+		const element = id[i];
+		if (id.indexOf(element) === i) {
+			filteredId.push(element)
+		}
+		
+	}
+
+	console.log(filteredId);
+	 const arrayOfpromis = filteredId.map(async el => {
 		console.log(el);
 		return promise = await fetchById(el);
 		
