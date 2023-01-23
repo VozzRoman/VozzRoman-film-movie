@@ -11,17 +11,16 @@ export function saveLoadFilm() {
 	
 
 		setTimeout(() => {
-		const buttonList = document.querySelector('.button__list');
-		console.log(buttonList);
-		buttonList.addEventListener('click', clickOnModalButton);
+		// const buttonList = document.querySelector('.button__list');
+		// 	console.log(buttonList);
+			const addButton = document.querySelector('#add-watch');
+			// const removeButton = document.querySelector('#remove-wached');
+			// console.log(removeButton);
+		console.log(addButton);
+			addButton.addEventListener('click', clickOnModalButton);
+			
 			async function clickOnModalButton(e) {
-
-			
-				
-			if (e.target.nodeName !== 'BUTTON') {
-				return;
-			}
-			
+	
 			const id = Number(e.target.dataset.id);
 			console.log(id);
 			const promise = await fetchById(id);
@@ -33,6 +32,11 @@ export function saveLoadFilm() {
 			// film.map(el => console.log(el.id));
 			
 			}
+			// removeButton.addEventListener('click', clickOnRemoveButton);
+			// function clickOnRemoveButton(e) {
+			// 	const id = Number(e.target.dataset.id);
+			// 	console.log(id);
+			// }
 			
 	},500);
 }
