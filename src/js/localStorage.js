@@ -15,32 +15,36 @@ export function saveLoadFilm() {
 		// const buttonList = document.querySelector('.button__list');
 		// 	console.log(buttonList);
 			const addButton = document.querySelector('button[data-id]');
-			addButton.textContent = 'add to Watched';
-		console.log(addButton);
+			const removeButton = document.querySelector('button[data-removeId]');
+			console.log(removeButton);
+			console.log(addButton);
 			addButton.addEventListener('click', clickOnModalButton);
+			removeButton.addEventListener('click', clickOnRemoveButton);
 		
 			async function clickOnModalButton(e) {
 				
-			
-			id = Number(e.target.dataset.id);
+			const id = Number(e.target.dataset.id);
 			putData(id);
-			
-				
-				
-				
+		
 			// const promise = await fetchById(id);
 			// const data = promise;
-			// console.log(data);
-				
-				
+			// console.log(data);		
 			// const film = getData();
 			// console.log(film);
 			// film.map(el => console.log(el.id));
 			
 			}
+
+			function clickOnRemoveButton(e) {
+			const	id = Number(e.target.dataset.removeid);
+				console.log(id);
+				const getIdDelete = getData();
+				console.log(getIdDelete);
+				
+			}
 			
 			
-	},1000);
+	},500);
 }
 
 
