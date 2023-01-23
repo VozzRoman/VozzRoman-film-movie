@@ -1,13 +1,27 @@
 import { resf } from "./ref";
 import { getData } from "./localStorage";
+import { fetchById } from "./api";
 console.log('ok');
 
-
-	const film = getData();
-	console.log(film);
-	createMarkUp(film);
+async function getLocalDataAndRender() {
+	const id = getData();
+	console.log(id);
+	 const arrayOfpromis = id.map(async el => {
+		console.log(el);
+		return promise = await fetchById(el);
+		
+	 })
+		const film = await Promise.all(arrayOfpromis);
+		 console.log(film);
+		 createMarkUp(film);
 	
-
+	
+	
+	
+}
+	
+	
+getLocalDataAndRender();
 
 
 function createMarkUp(data) {

@@ -13,7 +13,7 @@ export function saveLoadFilm() {
 		setTimeout(() => {
 		// const buttonList = document.querySelector('.button__list');
 		// 	console.log(buttonList);
-			const addButton = document.querySelector('#add-watch');
+			const addButton = document.querySelector('button[data-id]');
 			const removeButton = document.querySelector('#remove-wached');
 			console.log(removeButton);
 		console.log(addButton);
@@ -25,10 +25,11 @@ export function saveLoadFilm() {
 	
 			id = Number(e.target.dataset.id);
 			console.log(id);
-			const promise = await fetchById(id);
-			const data = promise;
-			console.log(data);
-				putData(data);
+			// const promise = await fetchById(id);
+			// const data = promise;
+			// console.log(data);
+				putData(id);
+				
 			// const film = getData();
 			// console.log(film);
 			// film.map(el => console.log(el.id));
