@@ -4,6 +4,7 @@ import { saveLoadFilm } from "./localStorage";
 resf.containerFilms.addEventListener('click', onCLickFilm);
 resf.closeModalButton.addEventListener('click', onCLoseClick);
 resf.backdrop.addEventListener('click', onBackDropClick);
+import { KEY__BUTTON } from "./localStorage";
 
 function onCLickFilm(e) {
 	e.preventDefault();
@@ -21,7 +22,8 @@ function onCLickFilm(e) {
 	fetchById(id).then(res => createMarkUp(res)).catch(error => console.log(error));
 
 	saveLoadFilm();
-
+	const addButton = localStorage.getItem(KEY__BUTTON);
+	JSON.parse(addButton);
 
 }
 
@@ -95,7 +97,7 @@ function createMarkUp(data) {
 
 						<p class="card__text">${overview}</p>
 					<div class="button__list">
-					<button class="button__modal" id="add-watch" data-id="${id}">add to Watched</button>
+					<button class="button__modal" id="add-watch" data-id="${id}"></button>
 					<button class="button__modal" id="remove-wached">remove from library</button>
 					</div>	
 					</li>
